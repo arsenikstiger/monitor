@@ -1,0 +1,73 @@
+{
+    "defaults": {
+        "rotationTimeInSeconds": 10,
+        "redirectWallTimeInSeconds": 2
+    },
+    "browserOption": {
+        "headless":false,
+        "defaultViewport": null,
+        "args":[ "--start-maximized", "--start-fullscreen" ],
+        "ignoreDefaultArgs": ["--enable-automation"]
+    },
+    "groups": [{
+        "groupDefinition": {
+            "manager": "AuthenticatedGroupManager",
+            "name": "Elastic Search",
+            "rotationTimeInSeconds": 10
+        },
+        "login": {
+            "url": "https://www.elasticsearch.com/login",
+            "user": "login",
+            "userSelector": "input[name=username]",
+            "password": "password",
+            "passwordSelector": "input[name=password]",
+            "formButtonSelector": "form button"
+        },
+        "pages": [{
+                "pageDefinition": {
+                    "url": "https://www.elasticsearch.com/page/1?__fullscreen=true",
+                    "name": "Page 1"
+                }
+            }
+        ]
+    }, {
+        "groupDefinition": {
+            "manager": "AzureAuthenticatedGroupManager",
+            "name": "Azure DevOps",
+            "rotationTimeInSeconds": 10
+        },
+        "login": {
+            "url": "https://login.microsoftonline.com",
+            "user": "login",
+            "userSelector": "input[name=loginfmt]",
+            "password": "password",
+            "passwordSelector": "input[name=passwd]",
+            "formButtonSelector": "input.btn[type=submit]"
+        },
+        "pages": [{
+                "pageDefinition": {
+                    "url": "https://dev.azure.com/sample/project/_dashboards/dashboard/1",
+                    "name": "Dashboard"
+                }
+            },
+            {
+                "pageDefinition": {
+                    "url": "https://dev.azure.com/sample/project/_build?view=pipelines",
+                    "name": "Pipelines"
+                }
+            }
+        ]
+    }, {
+        "groupDefinition": {
+            "manager": "GroupManager",
+            "name": "Google",
+            "rotationTimeInSeconds": 10
+        },
+        "pages": [{
+            "pageDefinition": {
+                "url": "https://www.google.fr",
+                "name": "Google"
+            }
+        }]
+    }]
+}

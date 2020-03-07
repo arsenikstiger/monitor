@@ -1,0 +1,26 @@
+{
+  "name": "monitor",
+  "version": "1.0.0",
+  "description": "Automate multiple monitoring website rotation",
+  "main": "dist/main.js",
+  "bin": "dist/main.js",
+  "scripts": {
+    "build": "tsc && (if exist build rmdir /S /Q build) && pkg . --debug --out-path build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postbuild": "xcopy .\\node_modules\\puppeteer\\.local-chromium build\\chromium\\ /e /h /y",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "author": "aurelien.sudre",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^13.7.4",
+    "@types/puppeteer": "^2.0.1",
+    "path": "^0.12.7",
+    "puppeteer": "^2.1.1"
+  },
+  "devDependencies": {}
+}
